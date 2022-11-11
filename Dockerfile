@@ -18,6 +18,12 @@ RUN wget -O- https://api.github.com/repos/pocketbase/pocketbase/releases/latest 
   | tr -d '"' \
   | wget -qi -
 RUN unzip pocketbase*.zip -d /pocketbase
+RUN apk add --no-cache \
+    ca-certificates \
+    unzip \
+    wget \
+    zip \
+    zlib-dev
 WORKDIR /pocketbase
 RUN chmod +x ./pocketbase
 RUN rm /pocketbase*.zip
